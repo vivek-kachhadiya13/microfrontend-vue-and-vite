@@ -1,0 +1,40 @@
+{
+  "name": "microfrontend-vue-and-vite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-s build preview",
+    "build": "pnpm --parallel --filter=\"!./pigeon\" --filter=\"!./components-library\" build",
+    "preview": "run-p serve-remotes serve-host",
+    "serve-remotes": "pnpm --parallel --filter=\"!./pigeon\" --filter=\"!./components-library\" preview",
+    "serve-host": "pnpm --parallel --filter=\"./pigeon\" dev",
+    "stop": "kill-port --port 5000,5001,5002,5003"
+  },
+  "private": false,
+  "devDependencies": {
+    "@originjs/vite-plugin-federation": "^1.2.1",
+    "kill-port": "^2.0.1",
+    "npm-run-all": "^4.1.5"
+  },
+  "workspaces": [
+    "pigeon*",
+    "components-library"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivek-kachhadiya13/microfrontend-vue-and-vite.git"
+  },
+  "keywords": [
+    "micro-frontend",
+    "vue",
+    "vite",
+    "vite-plugin-federation"
+  ],
+  "author": "Vivek Kachhadiya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vivek-kachhadiya13/microfrontend-vue-and-vite/issues"
+  },
+  "homepage": "https://github.com/vivek-kachhadiya13/microfrontend-vue-and-vite#readme"
+}
